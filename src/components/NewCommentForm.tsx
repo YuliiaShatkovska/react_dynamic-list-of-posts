@@ -23,7 +23,7 @@ export const NewCommentForm: FC<Props> = ({ selectedPost, setComments }) => {
   const [authorNameError, setAuthorNameError] = useState(false);
   const [authorEmail, setAuthorEmail] = useState('');
   const [authorEmailError, setAuthorEmailError] = useState(false);
-  const [comentText, setComentText] = useState('');
+  const [commentText, setCommentText] = useState('');
   const [commentTextError, setCommentTextError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -43,7 +43,7 @@ export const NewCommentForm: FC<Props> = ({ selectedPost, setComments }) => {
 
       case 'body':
         setCommentTextError(false);
-        setComentText(event.target.value.trim());
+        setCommentText(event.target.value.trim());
         break;
     }
   };
@@ -53,7 +53,7 @@ export const NewCommentForm: FC<Props> = ({ selectedPost, setComments }) => {
     setAuthorEmailError(false);
     setAuthorEmail('');
     setAuthorEmailError(false);
-    setComentText('');
+    setCommentText('');
     setCommentTextError(false);
   };
 
@@ -62,7 +62,7 @@ export const NewCommentForm: FC<Props> = ({ selectedPost, setComments }) => {
 
     const preparedAuthorName = authorName.trim();
     const preparedAuthorEmail = authorEmail.trim();
-    const preparedCommentText = comentText.trim();
+    const preparedCommentText = commentText.trim();
 
     if (!preparedAuthorName) {
       setAuthorNameError(true);
@@ -92,7 +92,7 @@ export const NewCommentForm: FC<Props> = ({ selectedPost, setComments }) => {
     addComment(commentToAdd)
       .then(newComment => {
         setComments(currentComments => [...currentComments, newComment]);
-        setComentText('');
+        setCommentText('');
       })
       .catch(() => 'Something Wrong')
       .finally(() => setIsLoading(false));
@@ -185,7 +185,7 @@ export const NewCommentForm: FC<Props> = ({ selectedPost, setComments }) => {
             name="body"
             placeholder="Type comment here"
             className={cn('textarea', { 'is-danger': commentTextError })}
-            value={comentText}
+            value={commentText}
             onChange={handleInputChange}
           />
         </div>

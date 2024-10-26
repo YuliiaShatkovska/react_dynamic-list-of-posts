@@ -32,7 +32,7 @@ export const App = () => {
 
     getPosts(userId)
       .then(setPosts)
-      .catch(() => setError('Something went wrong!'))
+      .catch(() => setError('Unable to load posts!'))
       .finally(() => {
         setIsLoading(false);
       });
@@ -43,8 +43,7 @@ export const App = () => {
 
     getUsers()
       .then(setUsers)
-      .catch(() => setError('Something went wrong!'))
-      .finally(() => {});
+      .catch(() => setError('Unable to load users!'));
   }, []);
 
   return (

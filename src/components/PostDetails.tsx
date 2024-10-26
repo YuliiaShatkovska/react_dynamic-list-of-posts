@@ -20,11 +20,13 @@ export const PostDetails: FC<Props> = ({ selectedPost }) => {
   const [isShownForm, setIsShownForm] = useState(false);
 
   const handleDeleteComment = (id: Comment['id']) => {
-    deleteComment(id).then(() =>
-      setComments(currentComments =>
-        currentComments.filter(comment => comment.id !== id),
-      ),
-    );
+    deleteComment(id)
+      .then(() =>
+        setComments(currentComments =>
+          currentComments.filter(comment => comment.id !== id),
+        ),
+      )
+      .catch(() => 'Unable to delete post');
   };
 
   useEffect(() => {
